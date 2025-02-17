@@ -14,14 +14,6 @@ pnpm dev
 bun dev
 ```
 
-<table>
-  <tr>
-    <td align = "center">    
-      <img src="./readme/pumpbit.gif"/>      
-      <img src="./readme/testnetPumpbit_mini_app.gif"/>      
-    </td>
-  </tr>
-</table>
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
