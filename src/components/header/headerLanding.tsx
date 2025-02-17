@@ -21,7 +21,6 @@ import { usePathname } from "next/navigation";
 import { useUtilContext } from "@/hooks";
 import {
   Lang_trade,
-  Lang_earn
 } from "@/constants/language";
 import { useWeb3 } from "@/hooks";
 import { Dialog, DialogTrigger } from "../models";
@@ -145,10 +144,6 @@ export default function Header() {
             <div className="w-[180px]">
               <CustomWalletButton />
             </div>
-          </div>
-          <div className="hidden md:flex gap-x-4 items-center">
-            <LanguageMenu />
-            <MenuMore />
           </div>
         </div>
       </div>

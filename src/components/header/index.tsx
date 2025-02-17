@@ -9,7 +9,6 @@ import SettingMobileMenu from "@/components/header/settingMobileMenu";
 import LanguageMobileMenu from "@/components/header/languageMobileMenu";
 import { MenuMore } from "./menuMore";
 import { LanguageMenu } from "./language";
-import { ChainMenu } from "./chainMenu";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import {
   Popover,
@@ -18,14 +17,7 @@ import {
   PopoverTrigger,
 } from "../ui/popover";
 import { usePathname } from "next/navigation";
-import { useUtilContext } from "@/hooks";
-import {
-  Lang_trade,
-  Lang_earn
-} from "@/constants/language";
 import { useWeb3 } from "@/hooks";
-
-import { Dialog, DialogTrigger } from "../models";
 
 type MoreButtonType = {
   chain: string,

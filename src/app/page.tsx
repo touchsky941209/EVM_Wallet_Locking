@@ -8,9 +8,11 @@ export default function Earn() {
   const { usdcTokenContract, stakeContract, web3, account, isWeb3Loading } = useWeb3()
   const [stakeBtnLoading, setStakingBtnLoading] = useState<Boolean>(true)
   const [amount, setAmount] = useState<number>(0)
+  const [lockTime, setLockTime] = useState<number>(0)
   const [stakeState, setStakeState] = useState<any>()
   const StakeToken = async () => {
     try {
+      console.log("Locktime => ", lockTime)
       console.log(">>>>> amount =>", amount)
       setStakingBtnLoading(false)
       const gasPrice = await web3.eth.getGasPrice()
@@ -57,7 +59,6 @@ export default function Earn() {
       <div className="flex items-center justify-center  pt-12 font-Raleway">
         <div className="text-center font-ArchivoBlack font-normal custom-text">
           <h1 className=" font-ArchivoBlack lg:text-8xl text-7xl uppercase  ">
-            {Lang_earn.en}
           </h1>
           <p className="lg:text-6xl text-4xl  uppercase py-5  ">
             {
@@ -89,6 +90,16 @@ export default function Earn() {
             onChange={(e: any) => setAmount(Number(e.target.value))}
           />
         </div>
+
+        <div className="mt-10">
+          <p className="text-left">
+            LockTime with day
+          </p>
+          <input
+            className="w-[500px] h-[40px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            onChange={(e: any) => setLockTime(Number(e.target.value) * 24 * 3600)}
+          />
+        </div>
         <button
           className="w-[300px] h-[70px] bg-indigo-500 hover:bg-fuchsia-500 mt-10 rounded-xl text-[30px]"
           onClick={async () => {
@@ -101,17 +112,7 @@ export default function Earn() {
             stakeBtnLoading ? "Stake" : "●●●"
           }
         </button>
-        {/* <button
-          className="w-[300px] h-[70px] bg-indigo-500 hover:bg-fuchsia-500 mt-10 rounded-xl"
-          onClick={async () => {
-            await getTokenList()
-          }}>
-          Get Tokenlist
-        </button>
-        <button
-          onClick={() => getTokenBalance()}>
-          Get Balance
-        </button> */}
+
       </div>
     </div>
   );

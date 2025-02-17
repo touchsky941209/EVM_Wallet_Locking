@@ -9,7 +9,7 @@ export const Lang_earn = {
 }
 
 export const Lang_EASYREWARDSMADESIMPLE = {
-    en: "EASY REWARDS MADE SIMPLE",
+    en: "Comprehensive BlockChain",
     ch: "獎勵變簡單"
 }
 
