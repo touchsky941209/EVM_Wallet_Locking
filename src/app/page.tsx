@@ -20,7 +20,7 @@ export default function Earn() {
       const res = await usdcTokenContract.methods.approve(StakingContractAddress, amount * (10 ** 18)).send({ from: account, gasPrice: gasPrice })
       console.log(">>> tx : ", res.transactionHash)
 
-      const tx2 = await stakeContract.methods.Deposite(USDTAddress, amount * (10 ** 18)).send({ from: account })
+      const tx2 = await stakeContract.methods.Deposite(USDTAddress, amount * (10 ** 18), lockTime).send({ from: account })
       console.log(">>>> tx2 =>", tx2.transactionHash)
 
       console.log("Airdrop is success")
@@ -37,10 +37,12 @@ export default function Earn() {
     const tokenList = await stakeContract.methods.getStakingTokenList(account).call()
     const tokenAmount = await stakeContract.methods.getStakingTokenAmount(account).call()
     const tokenTime = await stakeContract.methods.getStakingTokenStartTime(account).call()
+    const tokenLockTime = await stakeContract.methods.getStakingTokenLockTime(account).call()
     setStakeState({
       tokenList: tokenList,
       tokenAmount: tokenAmount,
-      tokenTime: tokenTime
+      tokenTime: tokenTime,
+      tokenLockTime: tokenLockTime
     })
 
   }

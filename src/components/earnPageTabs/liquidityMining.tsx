@@ -5,17 +5,20 @@ import { useEffect, useState } from "react";
 export const LMiningAndPFiler = ({ stakeState }: any) => {
   const [amount, setAmount] = useState<any>([])
   const [startTime, setstartTime] = useState<any>([])
+  const [lockTime, setLockTime] = useState<any>([])
   useEffect(() => {
     if (stakeState) {
       setAmount(stakeState.tokenAmount)
       setstartTime(stakeState.tokenTime)
+      setLockTime(stakeState.tokenLockTime)
     }
   }, [stakeState])
 
   useEffect(() => {
     console.log("amount =>", amount)
     console.log("startTime =>", startTime)
-  }, [amount, startTime])
+    console.log("lockTime =>", lockTime)
+  }, [amount, startTime, lockTime])
 
   const convertTolocalTime = (unixTime: any) => {
     const milliseconds = Number(unixTime) * 1000;
@@ -53,7 +56,7 @@ export const LMiningAndPFiler = ({ stakeState }: any) => {
                     <td className="p-2">{"USDT"}</td>
                     <td className="p-2">{Number(amount[idx]) / (10 ** 18)}</td>
                     <td className="p-2">{convertTolocalTime(startTime[idx])}</td>
-                    <td className="p-2">{"3 month"}</td>
+                    <td className="p-2">{Number(lockTime[idx]) / (24 * 3600) + " day"}</td>
                   </tr>
                 ))
               }
